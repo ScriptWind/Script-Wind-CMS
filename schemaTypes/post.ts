@@ -126,6 +126,7 @@ export const post = defineType({
             name: 'body',
             title: 'Content',
             type: 'array',
+            validation: (Rule) => Rule.required().min(1),
             of: [
                 defineArrayMember({
                     type: 'block',
@@ -175,30 +176,27 @@ export const post = defineType({
                 }),
 
                 defineArrayMember({
-                    name: 'contentImage',
-                    title: 'Content Image',
-                    type: 'image',
-                    options: { hotspot: true },
-                    fields: [
-                        defineField({
-                            name: 'alt',
-                            title: 'Alt Text',
-                            type: 'string',
-                            components: { input: CharacterCountInput as any },
-                            options: { maxLength: 120 } as any,
-                            validation: (Rule) => Rule.required().max(120),
-                            description: 'Recommended max: 120 characters',
-                        }),
-                        defineField({
-                            name: 'caption',
-                            title: 'Caption',
-                            type: 'string',
-                            components: { input: CharacterCountInput as any },
-                            options: { maxLength: 180 } as any,
-                            validation: (Rule) => Rule.max(180),
-                            description: 'Recommended max: 180 characters',
-                        }),
-                    ],
+                    type: 'postLead',
+                }),
+
+                defineArrayMember({
+                    type: 'contentImage',
+                }),
+
+                defineArrayMember({
+                    type: 'calloutBlock',
+                }),
+
+                defineArrayMember({
+                    type: 'codeBlock',
+                }),
+
+                defineArrayMember({
+                    type: 'dividerBlock',
+                }),
+                
+                defineArrayMember({
+                    type: 'tableBlock',
                 }),
             ],
         }),
