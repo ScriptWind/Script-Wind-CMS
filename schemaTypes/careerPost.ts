@@ -23,13 +23,20 @@ export const careerPost = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'image',
-      title: 'Job Image',
+      name: 'jobPoster',
+      title: 'Job Poster',
       type: 'image',
       options: {
         hotspot: true,
       },
-      description: 'Used as job/card image or hero/card visual on frontend',
+      description: 'Job poster shown inside the modal after description',
+    }),
+    // Hidden legacy field to prevent Sanity Studio error during field migration
+    defineField({
+      name: 'image',
+      title: 'Legacy Image',
+      type: 'image',
+      hidden: true,
     }),
     defineField({
       name: 'shortDescription',
@@ -44,6 +51,7 @@ export const careerPost = defineType({
       type: 'array',
       of: [{ type: 'block' }],
       description: 'Full job description',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'location',
@@ -122,7 +130,7 @@ export const careerPost = defineType({
       title: 'title',
       employmentType: 'employmentType',
       location: 'location',
-      media: 'image',
+      media: 'jobPoster',
     },
     prepare({ title, employmentType, location, media }) {
       const subtitle = [employmentType, location].filter(Boolean).join(' • ')
