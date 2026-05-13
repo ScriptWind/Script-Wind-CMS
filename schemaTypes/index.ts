@@ -12,6 +12,10 @@ import { portfolioProject } from './portfolioProject'
 import { projectCategory } from './projectCategory'
 import { technology } from './technology'
 
+// New Documents
+import { client } from './client'
+import { careerPost } from './careerPost'
+
 // Portfolio Objects
 import { projectLink } from '../schemas/objects/projectLink'
 import { projectFeature } from '../schemas/objects/projectFeature'
@@ -31,6 +35,9 @@ export const schemaTypes = [
   portfolioProject,
   projectCategory,
   technology,
+  // New
+  client,
+  careerPost,
   projectLink,
   projectFeature,
   projectMetric,

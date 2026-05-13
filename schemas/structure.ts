@@ -54,7 +54,28 @@ export const structure = (S: StructureBuilder) =>
             .title('Tech Stack')
         ),
 
+      S.divider(),
+
+      // New Content
+      S.listItem()
+        .title('Clients')
+        .schemaType('client')
+        .child(
+          S.documentTypeList('client')
+            .title('Clients')
+        ),
+
+      S.listItem()
+        .title('Career Posts')
+        .schemaType('careerPost')
+        .child(
+          S.documentTypeList('careerPost')
+            .title('Career Posts')
+        ),
+
+      S.divider(),
+
       ...S.documentTypeListItems().filter(
-        (listItem) => !['post', 'portfolioProject', 'projectCategory', 'technology'].includes(listItem.getId() || '')
+        (listItem) => !['post', 'portfolioProject', 'projectCategory', 'technology', 'client', 'careerPost'].includes(listItem.getId() || '')
       ),
     ])
